@@ -3,9 +3,6 @@ export const STAT_MAX_LEVEL = 10;
 export const STAT_MIN_LEVEL = 0;
 export const WILLPOWER_MIN = -5; // Cap for negative willpower
 
-// Deep work timer (in milliseconds)
-export const DEEP_WORK_DURATION = 30 * 60 * 1000; // 30 minutes
-
 // LocalStorage keys
 export const STORAGE_KEYS = {
   STATS: 'the-system-stats',
@@ -14,7 +11,6 @@ export const STORAGE_KEYS = {
   HABIT_LOGS: 'the-system-habit-logs',
   ACTIVITIES: 'the-system-activities',
   SETTINGS: 'the-system-settings',
-  DEEP_WORK: 'the-system-deep-work',
 } as const;
 
 // Default settings

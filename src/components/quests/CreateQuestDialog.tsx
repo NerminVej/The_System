@@ -90,7 +90,6 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
                 <option value="workout">Workout (Strength +1)</option>
                 <option value="endurance">Endurance (Stamina +1)</option>
                 <option value="skill">Skill (Agility +1)</option>
-                <option value="deepwork">Deep Work (Intelligence +1)</option>
               </select>
             </div>
           </div>

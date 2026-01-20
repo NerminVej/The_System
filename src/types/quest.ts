@@ -2,7 +2,6 @@ export type QuestType =
   | 'workout'      // Increases Strength
   | 'endurance'    // Increases Stamina
   | 'skill'        // Increases Agility
-  | 'deepwork'     // Increases Intelligence
   | 'general';     // No specific stat increase
 
 export type QuestFrequency = 'daily' | 'weekly';

@@ -6,7 +6,6 @@ import { PlayerLevel } from '@/components/stats/PlayerLevel';
 import { TodayProgress } from './TodayProgress';
 import { QuickActions } from './QuickActions';
 import { StreakCounter } from '@/components/punishment/StreakCounter';
-import { DeepWorkTimer } from '@/components/deepwork/DeepWorkTimer';
 import { useQuestStore } from '@/store';
 
 export function DashboardOverview() {
@@ -59,10 +58,6 @@ export function DashboardOverview() {
         currentStreak={currentStreak}
         longestStreak={longestStreak}
       />
-
-      <div id="deep-work-timer">
-        <DeepWorkTimer />
-      </div>
     </div>
   );
 }

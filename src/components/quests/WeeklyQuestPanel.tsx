@@ -34,9 +34,6 @@ export function WeeklyQuestPanel() {
         case 'skill':
           statIncreased = increaseStat('agility');
           break;
-        case 'deepwork':
-          statIncreased = increaseStat('intelligence');
-          break;
       }
 
       if (statIncreased) {
