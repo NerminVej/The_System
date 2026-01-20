@@ -3,6 +3,7 @@
 import { useStatsStore } from '@/store';
 import { StatCard } from '@/components/stats/StatCard';
 import { PlayerLevel } from '@/components/stats/PlayerLevel';
+import { StatsRadarChart } from '@/components/stats/StatsRadarChart';
 import { ActivityHeatmap } from '@/components/heatmap/ActivityHeatmap';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -14,6 +15,8 @@ export default function StatsPage() {
       <h1 className="text-4xl font-bold gradient-text">Stats Overview</h1>
 
       <PlayerLevel level={playerLevel} />
+
+      <StatsRadarChart stats={stats} />
 
       <div className="grid md:grid-cols-3 gap-4">
         <StatCard
