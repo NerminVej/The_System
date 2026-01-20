@@ -22,7 +22,7 @@ export default function HabitsPage() {
     toast.success('Habit deleted');
   };
 
-  const handleLogHabit = (habitId: string, logType: 'completed' | 'resisted') => {
+  const handleLogHabit = (habitId: string, logType: 'completed' | 'resisted' | 'failed') => {
     const habit = habits.find((h) => h.id === habitId);
     if (!habit) return;
 
@@ -36,6 +36,10 @@ export default function HabitsPage() {
     } else if (habit.type === 'bad' && logType === 'resisted') {
       increaseStat('willpower');
       toast.success(`Bad habit resisted! Willpower +1`);
+      logActivity(0, 1, 1);
+    } else if (habit.type === 'bad' && logType === 'failed') {
+      decreaseStat('willpower');
+      toast.error(`Failed to resist bad habit! Willpower -1`);
       logActivity(0, 1, 1);
     }
   };

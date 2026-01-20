@@ -5,7 +5,7 @@ import { HabitCard } from './HabitCard';
 
 interface HabitListProps {
   habits: Habit[];
-  onLogHabit: (habitId: string, type: 'completed' | 'resisted') => void;
+  onLogHabit: (habitId: string, type: 'completed' | 'resisted' | 'failed') => void;
   onDeleteHabit: (habitId: string) => void;
 }
 

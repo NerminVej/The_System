@@ -12,7 +12,7 @@ export interface HabitLog {
   id: string;
   habitId: string;
   timestamp: string;
-  type: 'completed' | 'resisted'; // completed for good habits, resisted for bad habits
+  type: 'completed' | 'resisted' | 'failed'; // completed for good habits, resisted/failed for bad habits
 }
 
 export interface HabitState {
