@@ -5,11 +5,17 @@ import { HabitCard } from './HabitCard';
 
 interface HabitListProps {
   habits: Habit[];
-  onLogHabit: (habitId: string, type: 'completed' | 'resisted' | 'failed') => void;
+  onToggleHabit: (habitId: string) => void;
+  isHabitCheckedToday: (habitId: string) => boolean;
   onDeleteHabit: (habitId: string) => void;
 }
 
-export function HabitList({ habits, onLogHabit, onDeleteHabit }: HabitListProps) {
+export function HabitList({
+  habits,
+  onToggleHabit,
+  isHabitCheckedToday,
+  onDeleteHabit,
+}: HabitListProps) {
   if (habits.length === 0) {
     return (
       <div className="text-center py-12 text-muted-foreground">
@@ -30,7 +36,8 @@ export function HabitList({ habits, onLogHabit, onDeleteHabit }: HabitListProps)
             <HabitCard
               key={habit.id}
               habit={habit}
-              onLog={(type) => onLogHabit(habit.id, type)}
+              isCheckedToday={isHabitCheckedToday(habit.id)}
+              onToggle={() => onToggleHabit(habit.id)}
               onDelete={() => onDeleteHabit(habit.id)}
             />
           ))}
@@ -44,7 +51,8 @@ export function HabitList({ habits, onLogHabit, onDeleteHabit }: HabitListProps)
             <HabitCard
               key={habit.id}
               habit={habit}
-              onLog={(type) => onLogHabit(habit.id, type)}
+              isCheckedToday={isHabitCheckedToday(habit.id)}
+              onToggle={() => onToggleHabit(habit.id)}
               onDelete={() => onDeleteHabit(habit.id)}
             />
           ))}

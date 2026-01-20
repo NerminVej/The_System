@@ -72,8 +72,8 @@ export function CreateHabitDialog({ onCreateHabit }: CreateHabitDialogProps) {
                 onChange={(e) => setType(e.target.value as HabitType)}
                 className="w-full rounded-md border border-sl-purple/30 bg-sl-black px-3 py-2 text-sm"
               >
-                <option value="good">Good Habit (Willpower +1 on completion)</option>
-                <option value="bad">Bad Habit (Willpower -1 if not resisted)</option>
+                <option value="good">Good Habit (Willpower +1 on check)</option>
+                <option value="bad">Bad Habit (Willpower +1 on check)</option>
               </select>
             </div>
           </div>

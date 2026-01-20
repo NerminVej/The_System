@@ -6,13 +6,15 @@ export interface Habit {
   type: HabitType;
   willpowerImpact: number; // +1 for good, -1 for bad
   createdAt: string;
+  currentStreak: number;
+  longestStreak: number;
 }
 
 export interface HabitLog {
   id: string;
   habitId: string;
-  timestamp: string;
-  type: 'completed' | 'resisted' | 'failed'; // completed for good habits, resisted/failed for bad habits
+  date: string; // YYYY-MM-DD format
+  completed: boolean;
 }
 
 export interface HabitState {
