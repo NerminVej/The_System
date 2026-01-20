@@ -4,7 +4,6 @@ import { useStatsStore } from '@/store';
 import { StatCard } from '@/components/stats/StatCard';
 import { PlayerLevel } from '@/components/stats/PlayerLevel';
 import { TodayProgress } from './TodayProgress';
-import { QuickActions } from './QuickActions';
 import { StreakCounter } from '@/components/punishment/StreakCounter';
 import { useQuestStore } from '@/store';
 
@@ -49,10 +48,7 @@ export function DashboardOverview() {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <TodayProgress />
-        <QuickActions />
-      </div>
+      <TodayProgress />
 
       <StreakCounter
         currentStreak={currentStreak}
