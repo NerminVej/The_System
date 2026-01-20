@@ -54,49 +54,51 @@ export function ActivityHeatmap() {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-1 overflow-x-auto pb-2">
-        {weeks.map((week, weekIndex) => (
-          <div key={weekIndex} className="flex flex-col gap-1">
-            {week.map((day) => {
-              const dateStr = format(day, 'yyyy-MM-dd');
-              return (
-                <div
-                  key={dateStr}
-                  className={cn(
-                    'w-3 h-3 rounded-sm border transition-all cursor-pointer hover:scale-125',
-                    getIntensityColor(day)
-                  )}
-                  onMouseEnter={() => setHoveredDate(dateStr)}
-                  onMouseLeave={() => setHoveredDate(null)}
-                  title={format(day, 'MMM d, yyyy')}
-                />
-              );
-            })}
-          </div>
-        ))}
-      </div>
-
-      {hoveredDate && (
-        <div className="bg-sl-black-lighter border border-sl-purple/30 rounded p-3 text-sm">
-          <p className="font-semibold mb-2">
-            {format(new Date(hoveredDate), 'MMMM d, yyyy')}
-          </p>
-          {hoveredActivity ? (
-            <div className="space-y-1 text-muted-foreground">
-              <p>Quests: {hoveredActivity.questsCompleted}</p>
-              <p>Habits: {hoveredActivity.habitsCompleted}</p>
-              <p>Stats Gained: {hoveredActivity.statsGained}</p>
-              {hoveredActivity.allDailyQuestsCompleted && (
-                <p className="text-sl-purple font-semibold">
-                  ✓ All daily quests completed
-                </p>
-              )}
+      <div className="relative">
+        <div className="flex gap-1 overflow-x-auto pb-2">
+          {weeks.map((week, weekIndex) => (
+            <div key={weekIndex} className="flex flex-col gap-1">
+              {week.map((day) => {
+                const dateStr = format(day, 'yyyy-MM-dd');
+                return (
+                  <div
+                    key={dateStr}
+                    className={cn(
+                      'w-3 h-3 rounded-sm border transition-all cursor-pointer hover:scale-125',
+                      getIntensityColor(day)
+                    )}
+                    onMouseEnter={() => setHoveredDate(dateStr)}
+                    onMouseLeave={() => setHoveredDate(null)}
+                    title={format(day, 'MMM d, yyyy')}
+                  />
+                );
+              })}
             </div>
-          ) : (
-            <p className="text-muted-foreground">No activity</p>
-          )}
+          ))}
         </div>
-      )}
+
+        {hoveredDate && (
+          <div className="absolute top-full mt-2 left-0 bg-sl-black-lighter border border-sl-purple/30 rounded p-3 text-sm shadow-lg z-10">
+            <p className="font-semibold mb-2">
+              {format(new Date(hoveredDate), 'MMMM d, yyyy')}
+            </p>
+            {hoveredActivity ? (
+              <div className="space-y-1 text-muted-foreground">
+                <p>Quests: {hoveredActivity.questsCompleted}</p>
+                <p>Habits: {hoveredActivity.habitsCompleted}</p>
+                <p>Stats Gained: {hoveredActivity.statsGained}</p>
+                {hoveredActivity.allDailyQuestsCompleted && (
+                  <p className="text-sl-purple font-semibold">
+                    ✓ All daily quests completed
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="text-muted-foreground">No activity</p>
+            )}
+          </div>
+        )}
+      </div>
 
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <span>Less</span>

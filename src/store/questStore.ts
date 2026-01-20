@@ -27,6 +27,12 @@ interface QuestState {
   importQuests: (data: Partial<QuestState>) => void;
 }
 
+const validQuestTypes: QuestType[] = ['workout', 'endurance', 'skill', 'general'];
+
+const isValidQuest = (quest: Quest): boolean => {
+  return validQuestTypes.includes(quest.type);
+};
+
 export const useQuestStore = create<QuestState>()(
   persist(
     (set, get) => ({
@@ -150,6 +156,13 @@ export const useQuestStore = create<QuestState>()(
     }),
     {
       name: STORAGE_KEYS.QUESTS,
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          // Clean up any quests with invalid types (like removed 'deepwork')
+          state.dailyQuests = state.dailyQuests.filter(isValidQuest);
+          state.weeklyQuests = state.weeklyQuests.filter(isValidQuest);
+        }
+      },
     }
   )
 );

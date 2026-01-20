@@ -20,7 +20,7 @@ const questTypeConfig: Record<
 };
 
 export function QuestTypeTag({ type, className }: QuestTypeTagProps) {
-  const config = questTypeConfig[type];
+  const config = questTypeConfig[type] || questTypeConfig['general'];
 
   return (
     <Badge variant="outline" className={cn(config.color, 'border', className)}>
