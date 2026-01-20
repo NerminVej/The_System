@@ -3,10 +3,11 @@ import { STAT_MAX_LEVEL } from './constants';
 
 /**
  * Calculate player level as the minimum of all stat levels
+ * Player level can never go below 0, even if willpower is negative
  */
 export function calculatePlayerLevel(stats: PlayerStats): number {
   const statLevels = Object.values(stats).map((stat) => stat.level);
-  return Math.min(...statLevels);
+  return Math.max(0, Math.min(...statLevels));
 }
 
 /**
