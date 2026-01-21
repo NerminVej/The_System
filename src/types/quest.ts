@@ -2,6 +2,9 @@ export type QuestType =
   | 'workout'      // Increases Strength
   | 'endurance'    // Increases Stamina
   | 'skill'        // Increases Agility
+  | 'intelligence' // Increases Intelligence
+  | 'discipline'   // Increases Discipline
+  | 'willpower'    // Increases Willpower
   | 'general';     // No specific stat increase
 
 export type QuestFrequency = 'daily' | 'weekly';
