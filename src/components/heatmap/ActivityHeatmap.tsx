@@ -8,6 +8,7 @@ import { useState } from 'react';
 export function ActivityHeatmap() {
   const { activities } = useActivityStore();
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   // Generate last 365 days
   const endDate = startOfDay(new Date());
@@ -67,7 +68,13 @@ export function ActivityHeatmap() {
                       'w-3 h-3 rounded-sm border transition-all cursor-pointer hover:scale-125',
                       getIntensityColor(day)
                     )}
-                    onMouseEnter={() => setHoveredDate(dateStr)}
+                    onMouseEnter={(e) => {
+                      setHoveredDate(dateStr);
+                      setMousePosition({ x: e.clientX, y: e.clientY });
+                    }}
+                    onMouseMove={(e) => {
+                      setMousePosition({ x: e.clientX, y: e.clientY });
+                    }}
                     onMouseLeave={() => setHoveredDate(null)}
                     title={format(day, 'MMM d, yyyy')}
                   />
@@ -78,7 +85,13 @@ export function ActivityHeatmap() {
         </div>
 
         {hoveredDate && (
-          <div className="absolute top-full mt-2 left-0 bg-sl-black-lighter border border-sl-purple/30 rounded p-3 text-sm shadow-lg z-10">
+          <div
+            className="fixed bg-sl-black-lighter border border-sl-purple/30 rounded p-3 text-sm shadow-lg z-50 pointer-events-none"
+            style={{
+              left: `${mousePosition.x + 10}px`,
+              top: `${mousePosition.y + 10}px`,
+            }}
+          >
             <p className="font-semibold mb-2">
               {format(new Date(hoveredDate), 'MMMM d, yyyy')}
             </p>
