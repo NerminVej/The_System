@@ -3,7 +3,6 @@ export type StatType =
   | 'stamina'
   | 'intelligence'
   | 'agility'
-  | 'discipline'
   | 'willpower';
 
 export interface Stat {
@@ -16,7 +15,6 @@ export interface PlayerStats {
   stamina: Stat;
   intelligence: Stat;
   agility: Stat;
-  discipline: Stat;
   willpower: Stat;
 }
 

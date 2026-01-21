@@ -43,7 +43,7 @@ export function TodayProgress() {
           </div>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Complete all quests to earn +1 Discipline
+            Complete all quests to earn +1 Willpower
           </p>
         )}
       </CardContent>

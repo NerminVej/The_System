@@ -46,7 +46,6 @@ export function getStatColor(statType: StatType): string {
     stamina: 'text-green-500',
     intelligence: 'text-blue-500',
     agility: 'text-yellow-500',
-    discipline: 'text-purple-500',
     willpower: 'text-cyan-500',
   };
   return colors[statType];
@@ -61,7 +60,6 @@ export function getStatIcon(statType: StatType): string {
     stamina: '🏃',
     intelligence: '🧠',
     agility: '⚡',
-    discipline: '🎯',
     willpower: '🔥',
   };
   return icons[statType];

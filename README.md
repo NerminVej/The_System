@@ -12,10 +12,10 @@ A Solo Leveling-inspired self-improvement system built with Next.js 14, TypeScri
   - Endurance → Stamina +1
   - Skill → Agility +1
   - Deep Work → Intelligence +1
-  - Completing ALL daily quests → Discipline +1
+  - Completing ALL daily quests → Willpower +1
 
 ### 📊 Stats & Leveling
-- **6 Core Stats**: Strength, Stamina, Intelligence, Agility, Discipline, Willpower
+- **5 Core Stats**: Strength, Stamina, Intelligence, Agility, Willpower
 - Each stat goes from 0-10
 - Player level = minimum of all stat levels
 - Level up when all stats reach the next tier together
@@ -133,10 +133,6 @@ Open [http://localhost:3000](http://localhost:3000) to see the app.
 - 1 action = 1 XP = 1 stat level
 - Each stat maxes at level 10
 - Player level = minimum of all stats
-
-### Discipline Stat
-- Only increases when ALL daily quests are completed
-- Encourages consistency and completion
 
 ### Willpower Stat
 - Can go negative (minimum: -5)

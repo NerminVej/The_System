@@ -27,7 +27,7 @@ interface QuestState {
   importQuests: (data: Partial<QuestState>) => void;
 }
 
-const validQuestTypes: QuestType[] = ['workout', 'endurance', 'skill', 'intelligence', 'discipline', 'willpower', 'general'];
+const validQuestTypes: QuestType[] = ['workout', 'endurance', 'skill', 'intelligence', 'willpower', 'general'];
 
 const isValidQuest = (quest: Quest): boolean => {
   return validQuestTypes.includes(quest.type);

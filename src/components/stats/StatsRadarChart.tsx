@@ -13,13 +13,12 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
   const maxRadius = size * 0.35;
   const numLevels = 5;
 
-  // Order of stats for the hexagon (clockwise from top)
+  // Order of stats for the pentagon (clockwise from top)
   const statOrder: Array<keyof PlayerStats> = [
     'strength',
     'agility',
     'stamina',
     'willpower',
-    'discipline',
     'intelligence',
   ];
 
@@ -28,15 +27,14 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
     stamina: 'Stamina',
     intelligence: 'Intelligence',
     agility: 'Agility',
-    discipline: 'Discipline',
     willpower: 'Willpower',
   };
 
-  // Calculate angle for each stat (hexagon has 6 points)
-  const angleStep = (Math.PI * 2) / 6;
+  // Calculate angle for each stat (pentagon has 5 points)
+  const angleStep = (Math.PI * 2) / 5;
   const startAngle = -Math.PI / 2; // Start at top
 
-  // Function to calculate point position on hexagon
+  // Function to calculate point position on pentagon
   const getPoint = (index: number, radius: number) => {
     const angle = startAngle + angleStep * index;
     return {
@@ -45,9 +43,9 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
     };
   };
 
-  // Generate hexagon ring paths for background grid
-  const generateHexagonPath = (radius: number) => {
-    const points = Array.from({ length: 6 }, (_, i) => getPoint(i, radius));
+  // Generate pentagon ring paths for background grid
+  const generatePentagonPath = (radius: number) => {
+    const points = Array.from({ length: 5 }, (_, i) => getPoint(i, radius));
     return `M ${points[0].x} ${points[0].y} ${points
       .slice(1)
       .map((p) => `L ${p.x} ${p.y}`)
@@ -120,7 +118,7 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
               return (
                 <path
                   key={i}
-                  d={generateHexagonPath(radius)}
+                  d={generatePentagonPath(radius)}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1"

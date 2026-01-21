@@ -37,9 +37,6 @@ export function WeeklyQuestPanel() {
         case 'intelligence':
           statIncreased = increaseStat('intelligence');
           break;
-        case 'discipline':
-          statIncreased = increaseStat('discipline');
-          break;
         case 'willpower':
           statIncreased = increaseStat('willpower');
           break;

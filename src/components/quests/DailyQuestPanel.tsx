@@ -37,9 +37,6 @@ export function DailyQuestPanel() {
         case 'intelligence':
           statIncreased = increaseStat('intelligence');
           break;
-        case 'discipline':
-          statIncreased = increaseStat('discipline');
-          break;
         case 'willpower':
           statIncreased = increaseStat('willpower');
           break;
@@ -57,8 +54,8 @@ export function DailyQuestPanel() {
       ).length;
 
       if (newCompletedCount === totalCount && totalCount > 0) {
-        increaseStat('discipline');
-        toast.success('All daily quests completed! +1 Discipline');
+        increaseStat('willpower');
+        toast.success('All daily quests completed! +1 Willpower');
       }
 
       // Log activity

@@ -21,7 +21,6 @@ const initialStats: PlayerStats = {
   stamina: { level: 0, xp: 0 },
   intelligence: { level: 0, xp: 0 },
   agility: { level: 0, xp: 0 },
-  discipline: { level: 0, xp: 0 },
   willpower: { level: 0, xp: 0 },
 };
 

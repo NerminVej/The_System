@@ -37,11 +37,6 @@ export function DashboardOverview() {
           xp={stats.agility.xp}
         />
         <StatCard
-          statType="discipline"
-          level={stats.discipline.level}
-          xp={stats.discipline.xp}
-        />
-        <StatCard
           statType="willpower"
           level={stats.willpower.level}
           xp={stats.willpower.xp}

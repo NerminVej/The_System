@@ -16,6 +16,8 @@ const questTypeConfig: Record<
   workout: { label: 'Workout', color: 'bg-red-500/20 text-red-500 border-red-500/50', icon: '💪' },
   endurance: { label: 'Endurance', color: 'bg-green-500/20 text-green-500 border-green-500/50', icon: '🏃' },
   skill: { label: 'Skill', color: 'bg-yellow-500/20 text-yellow-500 border-yellow-500/50', icon: '⚡' },
+  intelligence: { label: 'Intelligence', color: 'bg-blue-500/20 text-blue-500 border-blue-500/50', icon: '🧠' },
+  willpower: { label: 'Willpower', color: 'bg-purple-500/20 text-purple-500 border-purple-500/50', icon: '🔥' },
   general: { label: 'General', color: 'bg-gray-500/20 text-gray-500 border-gray-500/50', icon: '📋' },
 };
 

@@ -3,7 +3,6 @@ export type QuestType =
   | 'endurance'    // Increases Stamina
   | 'skill'        // Increases Agility
   | 'intelligence' // Increases Intelligence
-  | 'discipline'   // Increases Discipline
   | 'willpower'    // Increases Willpower
   | 'general';     // No specific stat increase
 
