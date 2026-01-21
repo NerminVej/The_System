@@ -71,10 +71,8 @@ export const useStatsStore = create<StatsState>()(
           const newXP = Math.max(0, currentStat.xp - amount);
           let newLevel = currentStat.level - amount;
 
-          // For willpower, allow negative but cap at minimum
-          if (statType === 'willpower') {
-            newLevel = Math.max(WILLPOWER_MIN, newLevel);
-          } else {
+          // For willpower, allow negative with no minimum
+          if (statType !== 'willpower') {
             newLevel = Math.max(0, newLevel);
           }
 
