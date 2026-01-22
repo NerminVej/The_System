@@ -80,7 +80,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        heading: ["Rajdhani", "sans-serif"],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        heading: ['var(--font-rajdhani)', 'sans-serif'],
+        display: ['var(--font-orbitron)', 'sans-serif'],
+        mono: ['var(--font-roboto-mono)', 'monospace'],
       },
       boxShadow: {
         "glow-cyan": "0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3)",

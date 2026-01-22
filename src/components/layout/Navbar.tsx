@@ -21,7 +21,9 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold gradient-text">The System</span>
+            <span className="text-2xl font-bold gradient-text font-display tracking-wider uppercase">
+              The System
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">

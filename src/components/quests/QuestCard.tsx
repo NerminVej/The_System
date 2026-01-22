@@ -1,12 +1,12 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { QuestTypeTag } from './QuestTypeTag';
 import { Quest } from '@/types';
 import { Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CornerBrackets } from '@/components/ui/corner-brackets';
 
 interface QuestCardProps {
   quest: Quest;
@@ -17,20 +17,26 @@ interface QuestCardProps {
 
 export function QuestCard({ quest, onToggle, onDelete, className }: QuestCardProps) {
   return (
-    <Card className={cn('quest-card', quest.completed && 'opacity-60', className)}>
-      <CardContent className="flex items-center gap-4 p-4">
+    <div className={cn(
+      'quest-card tech-border relative transition-all',
+      quest.completed && 'opacity-50',
+      className
+    )}>
+      <CornerBrackets size="sm" corners="diagonal" />
+
+      <div className="flex items-center gap-4 p-4">
         <Checkbox
           checked={quest.completed}
           onCheckedChange={onToggle}
-          className="border-sl-blue data-[state=checked]:bg-sl-blue"
+          className="border-sl-cyan data-[state=checked]:bg-sl-cyan data-[state=checked]:border-sl-cyan"
         />
 
-        <div className="flex-1 space-y-1">
-          <div className="flex items-center gap-2">
+        <div className="flex-1 space-y-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <h3
               className={cn(
-                'font-medium',
-                quest.completed && 'line-through text-muted-foreground'
+                'font-medium text-sm uppercase tracking-wide',
+                quest.completed ? 'line-through text-muted-foreground' : 'text-foreground'
               )}
             >
               {quest.title}
@@ -38,7 +44,7 @@ export function QuestCard({ quest, onToggle, onDelete, className }: QuestCardPro
             <QuestTypeTag type={quest.type} />
           </div>
           {quest.description && (
-            <p className="text-sm text-muted-foreground">{quest.description}</p>
+            <p className="text-xs text-sl-grey">{quest.description}</p>
           )}
         </div>
 
@@ -46,11 +52,11 @@ export function QuestCard({ quest, onToggle, onDelete, className }: QuestCardPro
           variant="ghost"
           size="icon"
           onClick={onDelete}
-          className="text-destructive hover:text-destructive hover:bg-destructive/10"
+          className="text-destructive hover:text-destructive hover:bg-destructive/10 shrink-0"
         >
           <Trash2 className="h-4 w-4" />
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

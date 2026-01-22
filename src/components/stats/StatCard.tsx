@@ -1,10 +1,10 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatProgressBar } from './StatProgressBar';
 import { StatType } from '@/types';
 import { getStatColor, getStatIcon } from '@/lib/levelingSystem';
 import { cn } from '@/lib/utils';
+import { CornerBrackets } from '@/components/ui/corner-brackets';
 
 interface StatCardProps {
   statType: StatType;
@@ -19,32 +19,51 @@ export function StatCard({ statType, level, xp, className }: StatCardProps) {
   const isNegative = level < 0;
 
   return (
-    <Card className={cn('stat-card', className)}>
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center justify-between text-sm font-medium">
-          <span className="flex items-center gap-2">
-            <span className="text-lg">{statIcon}</span>
-            <span className="capitalize">{statType}</span>
-          </span>
+    <div className={cn('stat-card tech-border relative', className)}>
+      <CornerBrackets size="md" corners="diagonal" />
+
+      {/* Header section */}
+      <div className="system-header">
+        <span className="text-lg">{statIcon}</span>
+        <span className="uppercase text-xs tracking-wider font-bold text-foreground">
+          {statType}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 space-y-3">
+        {/* Level display */}
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-sl-grey uppercase tracking-wider">LEVEL</span>
           <span
             className={cn(
-              'text-xl font-bold',
-              isNegative ? 'text-red-500' : statColor
+              'text-3xl font-bold font-mono',
+              isNegative ? 'text-red-500' : 'stat-value'
             )}
           >
             {level}
           </span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-2">
-        <StatProgressBar level={level} showGlow />
-        <div className="flex justify-between text-xs text-muted-foreground">
-          <span>XP: {xp}</span>
-          {isNegative && (
-            <span className="text-red-500 font-semibold">Warning!</span>
-          )}
         </div>
-      </CardContent>
-    </Card>
+
+        <div className="accent-line" />
+
+        {/* Progress bar */}
+        <StatProgressBar level={level} showGlow />
+
+        {/* XP display */}
+        <div className="flex justify-between text-xs">
+          <span className="text-sl-grey uppercase tracking-wider">XP</span>
+          <span className="font-mono text-sl-cyan">{xp}</span>
+        </div>
+
+        {isNegative && (
+          <div className="mt-2 px-2 py-1 bg-red-500/10 border border-red-500/50 rounded">
+            <span className="text-red-500 font-semibold text-xs uppercase tracking-wider">
+              ⚠ Warning!
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,8 @@
 'use client';
 
-import { Card } from '@/components/ui/card';
+import { SystemWindow } from '@/components/ui/system-window';
 import { cn } from '@/lib/utils';
+import { User } from 'lucide-react';
 
 interface PlayerLevelProps {
   level: number;
@@ -10,21 +11,21 @@ interface PlayerLevelProps {
 
 export function PlayerLevel({ level, className }: PlayerLevelProps) {
   return (
-    <Card
-      className={cn(
-        'holo-card text-center py-8 border-2 border-sl-cyan/50',
-        className
-      )}
+    <SystemWindow
+      title="PLAYER LEVEL"
+      icon={<User className="w-4 h-4" />}
+      className={cn('text-center hex-pattern', className)}
     >
-      <div className="space-y-2">
-        <p className="text-sm text-muted-foreground uppercase tracking-wider">
-          Player Level
+      <div className="space-y-4">
+        <div className="glow-divider" />
+        <p className="text-8xl font-bold font-mono stat-value animate-pulse-glow">
+          {level}
         </p>
-        <p className="text-6xl font-bold gradient-text">{level}</p>
-        <p className="text-xs text-muted-foreground">
-          Level up by increasing all stats
+        <div className="glow-divider" />
+        <p className="text-xs text-sl-grey uppercase tracking-widest mt-4">
+          Increase all stats to level up
         </p>
       </div>
-    </Card>
+    </SystemWindow>
   );
 }

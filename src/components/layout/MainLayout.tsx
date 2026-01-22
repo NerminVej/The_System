@@ -21,9 +21,9 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className="min-h-screen bg-sl-black">
+      <div className="min-h-screen bg-sl-black relative">
         <Navbar />
-        <main className="pb-20 md:pb-8">{children}</main>
+        <main className="pb-20 md:pb-8 relative z-[5]">{children}</main>
         <MobileNav />
       </div>
 
@@ -39,13 +39,15 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         position="top-right"
         toastOptions={{
           style: {
-            background: '#141824',
+            background: 'rgba(13, 18, 25, 0.95)',
             color: '#fff',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
+            border: '1px solid rgba(0, 212, 255, 0.5)',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)',
           },
           success: {
             iconTheme: {
-              primary: '#8b5cf6',
+              primary: '#00d4ff',
               secondary: '#fff',
             },
           },
