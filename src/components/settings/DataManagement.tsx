@@ -131,7 +131,7 @@ export function DataManagement() {
       <CardContent className="space-y-3">
         <Button
           onClick={handleExport}
-          className="w-full bg-sl-purple hover:bg-sl-purple/90"
+          className="w-full bg-sl-cyan hover:bg-sl-cyan/90"
         >
           <Download className="mr-2 h-4 w-4" />
           Export Data

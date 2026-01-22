@@ -84,7 +84,7 @@ export function DailyQuestPanel() {
         </CardTitle>
         <Progress value={progress} className="h-2 mt-2" />
         {allCompleted && (
-          <p className="text-sm text-sl-purple mt-2">All daily quests completed!</p>
+          <p className="text-sm text-sl-cyan mt-2">All daily quests completed!</p>
         )}
       </CardHeader>
       <CardContent className="space-y-4">

@@ -38,12 +38,12 @@ export function CreateHabitDialog({ onCreateHabit }: CreateHabitDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="w-full bg-sl-purple hover:bg-sl-purple/90">
+        <Button className="w-full bg-sl-cyan hover:bg-sl-cyan/90">
           <Plus className="mr-2 h-4 w-4" />
           Add Habit
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-sl-black-light border-sl-purple/50">
+      <DialogContent className="bg-sl-black-light border-sl-cyan/50">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Create Habit</DialogTitle>
@@ -60,7 +60,7 @@ export function CreateHabitDialog({ onCreateHabit }: CreateHabitDialogProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter habit name"
-                className="bg-sl-black border-sl-purple/30"
+                className="bg-sl-black border-sl-cyan/30"
               />
             </div>
 
@@ -70,7 +70,7 @@ export function CreateHabitDialog({ onCreateHabit }: CreateHabitDialogProps) {
                 id="type"
                 value={type}
                 onChange={(e) => setType(e.target.value as HabitType)}
-                className="w-full rounded-md border border-sl-purple/30 bg-sl-black px-3 py-2 text-sm"
+                className="w-full rounded-md border border-sl-cyan/30 bg-sl-black px-3 py-2 text-sm"
               >
                 <option value="good">Good Habit (Willpower +1 on check)</option>
                 <option value="bad">Bad Habit (Willpower +1 on check)</option>
@@ -79,7 +79,7 @@ export function CreateHabitDialog({ onCreateHabit }: CreateHabitDialogProps) {
           </div>
 
           <DialogFooter>
-            <Button type="submit" className="bg-sl-purple hover:bg-sl-purple/90">
+            <Button type="submit" className="bg-sl-cyan hover:bg-sl-cyan/90">
               Create Habit
             </Button>
           </DialogFooter>

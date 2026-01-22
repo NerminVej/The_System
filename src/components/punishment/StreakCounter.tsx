@@ -31,7 +31,7 @@ export function StreakCounter({
 
           <div className="text-right">
             <p className="text-sm text-muted-foreground">Longest</p>
-            <p className="text-2xl font-bold text-sl-purple">{longestStreak}</p>
+            <p className="text-2xl font-bold text-sl-cyan">{longestStreak}</p>
           </div>
         </div>
       </CardContent>

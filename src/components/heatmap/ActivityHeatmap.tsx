@@ -24,16 +24,16 @@ export function ActivityHeatmap() {
     const dateStr = format(date, 'yyyy-MM-dd');
     const activity = activityMap.get(dateStr);
 
-    if (!activity) return 'bg-sl-black-lighter border-sl-purple/10';
+    if (!activity) return 'bg-sl-black-lighter border-sl-cyan/10';
 
     const totalActivity =
       activity.questsCompleted + activity.habitsCompleted + activity.statsGained;
 
-    if (totalActivity === 0) return 'bg-sl-black-lighter border-sl-purple/10';
-    if (totalActivity <= 2) return 'bg-sl-purple/20 border-sl-purple/30';
-    if (totalActivity <= 5) return 'bg-sl-purple/40 border-sl-purple/50';
-    if (totalActivity <= 10) return 'bg-sl-purple/60 border-sl-purple/70';
-    return 'bg-sl-purple border-sl-purple';
+    if (totalActivity === 0) return 'bg-sl-black-lighter border-sl-cyan/10';
+    if (totalActivity <= 2) return 'bg-sl-cyan/20 border-sl-cyan/30';
+    if (totalActivity <= 5) return 'bg-sl-cyan/40 border-sl-cyan/50';
+    if (totalActivity <= 10) return 'bg-sl-cyan/60 border-sl-cyan/70';
+    return 'bg-sl-cyan border-sl-cyan';
   };
 
   // Group days by week
@@ -86,7 +86,7 @@ export function ActivityHeatmap() {
 
         {hoveredDate && (
           <div
-            className="fixed bg-sl-black-lighter border border-sl-purple/30 rounded p-3 text-sm shadow-lg z-50 pointer-events-none"
+            className="fixed bg-sl-black-lighter border border-sl-cyan/30 rounded p-3 text-sm shadow-lg z-50 pointer-events-none"
             style={{
               left: `${mousePosition.x + 10}px`,
               top: `${mousePosition.y + 10}px`,
@@ -101,7 +101,7 @@ export function ActivityHeatmap() {
                 <p>Habits: {hoveredActivity.habitsCompleted}</p>
                 <p>Stats Gained: {hoveredActivity.statsGained}</p>
                 {hoveredActivity.allDailyQuestsCompleted && (
-                  <p className="text-sl-purple font-semibold">
+                  <p className="text-sl-cyan font-semibold">
                     ✓ All daily quests completed
                   </p>
                 )}
@@ -116,11 +116,11 @@ export function ActivityHeatmap() {
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <span>Less</span>
         <div className="flex gap-1">
-          <div className="w-3 h-3 bg-sl-black-lighter border border-sl-purple/10 rounded-sm" />
-          <div className="w-3 h-3 bg-sl-purple/20 border border-sl-purple/30 rounded-sm" />
-          <div className="w-3 h-3 bg-sl-purple/40 border border-sl-purple/50 rounded-sm" />
-          <div className="w-3 h-3 bg-sl-purple/60 border border-sl-purple/70 rounded-sm" />
-          <div className="w-3 h-3 bg-sl-purple border border-sl-purple rounded-sm" />
+          <div className="w-3 h-3 bg-sl-black-lighter border border-sl-cyan/10 rounded-sm" />
+          <div className="w-3 h-3 bg-sl-cyan/20 border border-sl-cyan/30 rounded-sm" />
+          <div className="w-3 h-3 bg-sl-cyan/40 border border-sl-cyan/50 rounded-sm" />
+          <div className="w-3 h-3 bg-sl-cyan/60 border border-sl-cyan/70 rounded-sm" />
+          <div className="w-3 h-3 bg-sl-cyan border border-sl-cyan rounded-sm" />
         </div>
         <span>More</span>
       </div>

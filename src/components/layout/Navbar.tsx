@@ -17,7 +17,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="border-b border-sl-purple/20 bg-sl-black-light">
+    <nav className="border-b border-sl-cyan/20 bg-sl-black-light shadow-glow-cyan">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
@@ -35,8 +35,8 @@ export function Navbar() {
                   className={cn(
                     'flex items-center gap-2 px-4 py-2 rounded-lg transition-all',
                     isActive
-                      ? 'bg-sl-purple/20 text-sl-purple border border-sl-purple/50'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-sl-black-lighter'
+                      ? 'bg-sl-cyan/10 text-sl-cyan border border-sl-cyan/50 shadow-glow-cyan'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-sl-black-lighter hover:border hover:border-sl-cyan/20'
                   )}
                 >
                   <Icon className="w-4 h-4" />

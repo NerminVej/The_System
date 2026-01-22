@@ -25,7 +25,7 @@ export function StatProgressBar({ level, className, showGlow = false }: StatProg
         )}
       />
       {isMaxLevel && (
-        <span className="absolute -right-8 top-1/2 -translate-y-1/2 text-xs text-sl-purple animate-pulse">
+        <span className="absolute -right-8 top-1/2 -translate-y-1/2 text-xs text-sl-cyan animate-pulse cyan-glow-text">
           MAX
         </span>
       )}

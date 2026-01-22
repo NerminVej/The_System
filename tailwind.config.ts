@@ -51,20 +51,27 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
         // Solo Leveling custom colors
-        "sl-purple": {
-          DEFAULT: "#8b5cf6",
-          light: "#a78bfa",
-          dark: "#7c3aed",
+        "sl-cyan": {
+          DEFAULT: "#00d4ff",
+          light: "#4de3ff",
+          dark: "#00a3cc",
+          glow: "#00e6ff",
         },
         "sl-blue": {
-          DEFAULT: "#3b82f6",
-          light: "#60a5fa",
-          dark: "#2563eb",
+          DEFAULT: "#0099ff",
+          light: "#33adff",
+          dark: "#0077cc",
         },
         "sl-black": {
-          DEFAULT: "#0a0e1a",
-          light: "#141824",
-          lighter: "#1e2330",
+          DEFAULT: "#000510",
+          light: "#0a0e1a",
+          lighter: "#141824",
+          card: "#0d1219",
+        },
+        "sl-grey": {
+          DEFAULT: "#8b9bb4",
+          light: "#b4c0d4",
+          dark: "#5a6b82",
         },
       },
       borderRadius: {
@@ -76,8 +83,24 @@ const config: Config = {
         heading: ["Rajdhani", "sans-serif"],
       },
       boxShadow: {
-        "glow-purple": "0 0 20px rgba(139, 92, 246, 0.5)",
-        "glow-blue": "0 0 20px rgba(59, 130, 246, 0.5)",
+        "glow-cyan": "0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3)",
+        "glow-cyan-strong": "0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.4)",
+        "glow-blue": "0 0 20px rgba(0, 153, 255, 0.5)",
+        "inner-glow": "inset 0 0 20px rgba(0, 212, 255, 0.1)",
+      },
+      animation: {
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "border-flow": "border-flow 3s linear infinite",
+      },
+      keyframes: {
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3)" },
+          "50%": { boxShadow: "0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.5)" },
+        },
+        "border-flow": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "200% 50%" },
+        },
       },
     },
   },

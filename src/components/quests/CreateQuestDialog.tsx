@@ -41,12 +41,12 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="w-full bg-sl-purple hover:bg-sl-purple/90">
+        <Button className="w-full bg-sl-cyan hover:bg-sl-cyan/90">
           <Plus className="mr-2 h-4 w-4" />
           Add {frequency === 'daily' ? 'Daily' : 'Weekly'} Quest
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-sl-black-light border-sl-purple/50">
+      <DialogContent className="bg-sl-black-light border-sl-cyan/50">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Create {frequency === 'daily' ? 'Daily' : 'Weekly'} Quest</DialogTitle>
@@ -63,7 +63,7 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter quest title"
-                className="bg-sl-black border-sl-purple/30"
+                className="bg-sl-black border-sl-cyan/30"
               />
             </div>
 
@@ -74,7 +74,7 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter quest description"
-                className="bg-sl-black border-sl-purple/30"
+                className="bg-sl-black border-sl-cyan/30"
               />
             </div>
 
@@ -84,7 +84,7 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
                 id="type"
                 value={type}
                 onChange={(e) => setType(e.target.value as QuestType)}
-                className="w-full rounded-md border border-sl-purple/30 bg-sl-black px-3 py-2 text-sm"
+                className="w-full rounded-md border border-sl-cyan/30 bg-sl-black px-3 py-2 text-sm"
               >
                 <option value="general">General (No stat reward)</option>
                 <option value="workout">Workout (Strength +1)</option>
@@ -97,7 +97,7 @@ export function CreateQuestDialog({ frequency, onCreateQuest }: CreateQuestDialo
           </div>
 
           <DialogFooter>
-            <Button type="submit" className="bg-sl-purple hover:bg-sl-purple/90">
+            <Button type="submit" className="bg-sl-cyan hover:bg-sl-cyan/90">
               Create Quest
             </Button>
           </DialogFooter>

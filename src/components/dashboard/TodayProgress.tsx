@@ -16,7 +16,7 @@ export function TodayProgress() {
     <Card className="stat-card">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-sl-purple" />
+          <CheckCircle2 className="w-5 h-5 text-sl-cyan" />
           <span>Today&apos;s Progress</span>
         </CardTitle>
       </CardHeader>
@@ -36,8 +36,8 @@ export function TodayProgress() {
             No daily quests yet. Create some to get started!
           </p>
         ) : completed === total ? (
-          <div className="bg-sl-purple/10 border border-sl-purple/50 rounded p-3">
-            <p className="text-sm text-sl-purple font-semibold">
+          <div className="bg-sl-cyan/10 border border-sl-cyan/50 rounded p-3">
+            <p className="text-sm text-sl-cyan font-semibold">
               🎉 All daily quests completed!
             </p>
           </div>

@@ -12,7 +12,7 @@ export function PlayerLevel({ level, className }: PlayerLevelProps) {
   return (
     <Card
       className={cn(
-        'stat-card text-center py-8 bg-gradient-to-br from-sl-purple/20 to-sl-blue/20 border-sl-purple/50',
+        'holo-card text-center py-8 border-2 border-sl-cyan/50',
         className
       )}
     >

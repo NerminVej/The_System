@@ -51,7 +51,7 @@ export default function SettingsPage() {
               type="time"
               value={resetTime}
               onChange={(e) => setResetTime(e.target.value)}
-              className="bg-sl-black border-sl-purple/30"
+              className="bg-sl-black border-sl-cyan/30"
             />
             <p className="text-xs text-muted-foreground">
               Daily quests will reset at this time each day
@@ -64,7 +64,7 @@ export default function SettingsPage() {
               id="resetDay"
               value={resetDay}
               onChange={(e) => setResetDay(Number(e.target.value))}
-              className="w-full rounded-md border border-sl-purple/30 bg-sl-black px-3 py-2 text-sm"
+              className="w-full rounded-md border border-sl-cyan/30 bg-sl-black px-3 py-2 text-sm"
             >
               {daysOfWeek.map((day, index) => (
                 <option key={index} value={index}>
@@ -79,7 +79,7 @@ export default function SettingsPage() {
 
           <Button
             onClick={handleSaveSettings}
-            className="w-full bg-sl-purple hover:bg-sl-purple/90"
+            className="w-full bg-sl-cyan hover:bg-sl-cyan/90"
           >
             Save Settings
           </Button>
@@ -98,7 +98,7 @@ export default function SettingsPage() {
             gamifies your personal growth journey.
           </p>
           <p>Complete quests, build habits, and level up your stats!</p>
-          <div className="pt-4 border-t border-sl-purple/20">
+          <div className="pt-4 border-t border-sl-cyan/20">
             <p className="text-xs">
               Version 1.0.0 • Built with Next.js, TypeScript, and Zustand
             </p>

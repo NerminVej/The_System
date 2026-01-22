@@ -40,7 +40,7 @@ export function LevelUpAnimation({ show, newLevel, onComplete }: LevelUpAnimatio
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <p className="text-6xl font-bold text-sl-purple">{newLevel}</p>
+              <p className="text-6xl font-bold text-sl-cyan">{newLevel}</p>
               <p className="text-xl text-muted-foreground mt-2">
                 You have reached a new level!
               </p>
@@ -62,7 +62,7 @@ export function LevelUpAnimation({ show, newLevel, onComplete }: LevelUpAnimatio
                     duration: 1.5,
                     ease: 'easeOut',
                   }}
-                  className="w-2 h-2 bg-sl-purple rounded-full"
+                  className="w-2 h-2 bg-sl-cyan rounded-full"
                 />
               ))}
             </motion.div>
