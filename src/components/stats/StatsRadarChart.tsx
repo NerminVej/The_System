@@ -1,7 +1,8 @@
 'use client';
 
 import { PlayerStats } from '@/types';
-import { Card } from '@/components/ui/card';
+import { SystemWindow } from '@/components/ui/system-window';
+import { BarChart3 } from 'lucide-react';
 
 interface StatsRadarChartProps {
   stats: PlayerStats;
@@ -23,11 +24,11 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
   ];
 
   const statLabels = {
-    strength: 'Strength',
-    stamina: 'Stamina',
-    intelligence: 'Intelligence',
-    agility: 'Agility',
-    willpower: 'Willpower',
+    strength: 'STR',
+    stamina: 'STA',
+    intelligence: 'INT',
+    agility: 'AGI',
+    willpower: 'WIL',
   };
 
   // Calculate angle for each stat (pentagon has 5 points)
@@ -80,39 +81,54 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
   };
 
   return (
-    <Card className="stat-card w-full">
-      <div className="p-6">
-        <div className="flex justify-center">
-          <svg
-            width={size}
-            height={size}
-            viewBox={`0 0 ${size} ${size}`}
-            className="overflow-visible"
-          >
+    <SystemWindow
+      title="PLAYER ATTRIBUTES ANALYSIS"
+      icon={<BarChart3 className="w-4 h-4" />}
+      className="w-full hex-pattern"
+    >
+      <div className="flex justify-center">
+        <svg
+          width={size}
+          height={size}
+          viewBox={`0 0 ${size} ${size}`}
+          className="overflow-visible"
+        >
             <defs>
-              {/* Purple/pink gradient for the stat fill */}
+              {/* Cyan/blue gradient for the stat fill */}
               <linearGradient id="statGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#a855f7" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#ec4899" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#0099ff" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.3" />
               </linearGradient>
 
               {/* Gradient for the border */}
               <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#ec4899" />
+                <stop offset="0%" stopColor="#00d4ff" />
+                <stop offset="50%" stopColor="#4de3ff" />
+                <stop offset="100%" stopColor="#00d4ff" />
               </linearGradient>
 
-              {/* Glow filter */}
+              {/* Cyan glow filter */}
               <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
                 <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+
+              {/* Stronger glow for points */}
+              <filter id="strongGlow">
+                <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
                   <feMergeNode in="coloredBlur" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             </defs>
 
-            {/* Background hexagon rings */}
+            {/* Background pentagon rings */}
             {Array.from({ length: numLevels }, (_, i) => {
               const radius = ((i + 1) / numLevels) * maxRadius;
               return (
@@ -120,9 +136,9 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
                   key={i}
                   d={generatePentagonPath(radius)}
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#00d4ff"
                   strokeWidth="1"
-                  className="text-muted-foreground/20"
+                  opacity={0.1 + (i * 0.05)}
                 />
               );
             })}
@@ -137,9 +153,9 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
                   y1={center}
                   x2={point.x}
                   y2={point.y}
-                  stroke="currentColor"
+                  stroke="#00d4ff"
                   strokeWidth="1"
-                  className="text-muted-foreground/20"
+                  opacity="0.2"
                 />
               );
             })}
@@ -174,17 +190,25 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
                   <circle
                     cx={point.x}
                     cy={point.y}
-                    r="6"
-                    fill="url(#borderGradient)"
-                    opacity="0.5"
-                    filter="url(#glow)"
+                    r="8"
+                    fill="#00d4ff"
+                    opacity="0.3"
+                    filter="url(#strongGlow)"
+                  />
+                  {/* Middle glow */}
+                  <circle
+                    cx={point.x}
+                    cy={point.y}
+                    r="5"
+                    fill="#00d4ff"
+                    opacity="0.6"
                   />
                   {/* Inner point */}
                   <circle
                     cx={point.x}
                     cy={point.y}
-                    r="4"
-                    fill="url(#borderGradient)"
+                    r="3"
+                    fill="#4de3ff"
                     className="transition-all duration-300"
                   />
                 </g>
@@ -198,36 +222,55 @@ export function StatsRadarChart({ stats }: StatsRadarChartProps) {
 
               return (
                 <g key={`label-${stat}`}>
+                  {/* Stat abbreviation */}
                   <text
                     x={labelPos.x}
-                    y={labelPos.y}
+                    y={labelPos.y - 4}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-foreground font-bold text-sm"
+                    className="fill-sl-cyan font-bold text-sm uppercase tracking-wider"
+                    style={{
+                      filter: 'drop-shadow(0 0 4px rgba(0, 212, 255, 0.8))',
+                      fontFamily: 'var(--font-roboto-mono)',
+                    }}
                   >
                     {statLabels[stat]}
                   </text>
+                  {/* Level value */}
                   <text
                     x={labelPos.x}
-                    y={labelPos.y + 16}
+                    y={labelPos.y + 14}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-muted-foreground text-xs"
+                    className="fill-sl-grey text-xs"
+                    style={{
+                      fontFamily: 'var(--font-roboto-mono)',
+                    }}
                   >
-                    Lv. {level}
+                    [{level}]
                   </text>
                 </g>
               );
             })}
-          </svg>
-        </div>
+        </svg>
+      </div>
 
-        <div className="mt-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Stand Stats Distribution
-          </p>
+      {/* Stats legend */}
+      <div className="mt-6 pt-4 border-t border-sl-cyan/20">
+        <div className="grid grid-cols-5 gap-2 text-center text-xs">
+          {statOrder.map((stat) => {
+            const level = stats[stat].level;
+            return (
+              <div key={stat} className="space-y-1">
+                <div className="text-sl-cyan font-mono uppercase tracking-wider">
+                  {statLabels[stat]}
+                </div>
+                <div className="text-sl-grey font-mono">[{level}]</div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </Card>
+    </SystemWindow>
   );
 }

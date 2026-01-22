@@ -5,14 +5,18 @@ import { StatCard } from '@/components/stats/StatCard';
 import { PlayerLevel } from '@/components/stats/PlayerLevel';
 import { StatsRadarChart } from '@/components/stats/StatsRadarChart';
 import { ActivityHeatmap } from '@/components/heatmap/ActivityHeatmap';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SystemWindow } from '@/components/ui/system-window';
+import { Zap, TrendingUp, Calendar } from 'lucide-react';
 
 export default function StatsPage() {
   const { stats, playerLevel, totalXP } = useStatsStore();
 
   return (
     <div className="container mx-auto p-6 max-w-7xl space-y-8">
-      <h1 className="text-4xl font-bold gradient-text">Stats Overview</h1>
+      <h1 className="text-4xl font-bold gradient-text font-display uppercase tracking-wider">
+        Player Statistics
+      </h1>
+      <div className="glow-divider" />
 
       <PlayerLevel level={playerLevel} />
 
@@ -46,38 +50,51 @@ export default function StatsPage() {
         />
       </div>
 
-      <Card className="stat-card">
-        <CardHeader>
-          <CardTitle>Activity History</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Last 365 days of your progress
+      <SystemWindow
+        title="ACTIVITY HISTORY"
+        icon={<Calendar className="w-4 h-4" />}
+        className="hex-pattern"
+      >
+        <div className="space-y-2">
+          <p className="text-xs text-sl-grey uppercase tracking-widest">
+            Last 365 days of progression
           </p>
-        </CardHeader>
-        <CardContent>
+          <div className="glow-divider" />
           <ActivityHeatmap />
-        </CardContent>
-      </Card>
+        </div>
+      </SystemWindow>
 
       <div className="grid md:grid-cols-2 gap-4">
-        <Card className="stat-card">
-          <CardHeader>
-            <CardTitle>Total XP</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold gradient-text">{totalXP}</p>
-          </CardContent>
-        </Card>
-
-        <Card className="stat-card">
-          <CardHeader>
-            <CardTitle>Progress to Next Level</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Level up by increasing all stats to the same level
+        <SystemWindow
+          title="TOTAL EXPERIENCE"
+          icon={<Zap className="w-4 h-4" />}
+          className="hex-pattern"
+        >
+          <div className="text-center space-y-2">
+            <div className="glow-divider" />
+            <p className="text-6xl font-bold font-mono stat-value">{totalXP}</p>
+            <div className="glow-divider" />
+            <p className="text-xs text-sl-grey uppercase tracking-widest mt-4">
+              Accumulated XP
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </SystemWindow>
+
+        <SystemWindow
+          title="LEVEL PROGRESSION"
+          icon={<TrendingUp className="w-4 h-4" />}
+          className="hex-pattern"
+        >
+          <div className="space-y-3">
+            <p className="text-xs text-sl-grey uppercase tracking-widest">
+              Level Up Requirement
+            </p>
+            <div className="glow-divider" />
+            <p className="text-sm text-foreground">
+              Increase all stats to the same level to progress to the next player level
+            </p>
+          </div>
+        </SystemWindow>
       </div>
     </div>
   );
