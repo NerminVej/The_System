@@ -1,17 +1,16 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useStatsStore } from '@/store';
-import { Progress } from '@/components/ui/progress';
-import { STAT_MAX_LEVEL, WILLPOWER_MIN } from '@/lib/constants';
-import { cn } from '@/lib/utils';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useStatsStore } from "@/store";
+import { Progress } from "@/components/ui/progress";
+import { STAT_MAX_LEVEL, WILLPOWER_MIN } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export function WillpowerTracker() {
   const willpower = useStatsStore((state) => state.stats.willpower);
   const isNegative = willpower.level < 0;
   const isMaxLevel = willpower.level >= STAT_MAX_LEVEL;
 
-  // Calculate progress (0-100) accounting for negative values
   const range = STAT_MAX_LEVEL - WILLPOWER_MIN;
   const adjustedLevel = willpower.level - WILLPOWER_MIN;
   const progress = (adjustedLevel / range) * 100;
@@ -26,9 +25,9 @@ export function WillpowerTracker() {
           </span>
           <span
             className={cn(
-              'text-3xl font-bold',
-              isNegative && 'text-red-500',
-              isMaxLevel && 'text-cyan-500'
+              "text-3xl font-bold",
+              isNegative && "text-red-500",
+              isMaxLevel && "text-cyan-500",
             )}
           >
             {willpower.level}
