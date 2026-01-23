@@ -1,39 +1,42 @@
-'use client';
+"use client";
 
-import { useActivityStore } from '@/store';
-import { format, subDays, startOfDay, eachDayOfInterval } from 'date-fns';
-import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { useActivityStore } from "@/store";
+import { format, subDays, startOfDay, eachDayOfInterval } from "date-fns";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export function ActivityHeatmap() {
   const { activities } = useActivityStore();
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
-  // Generate last 365 days
   const endDate = startOfDay(new Date());
   const startDate = subDays(endDate, 364);
   const days = eachDayOfInterval({ start: startDate, end: endDate });
 
-  // Create a map for quick lookups
   const activityMap = new Map(
-    activities.map((activity) => [activity.date, activity])
+    activities.map((activity) => [activity.date, activity]),
   );
 
   const getIntensityColor = (date: Date) => {
-    const dateStr = format(date, 'yyyy-MM-dd');
+    const dateStr = format(date, "yyyy-MM-dd");
     const activity = activityMap.get(dateStr);
 
-    if (!activity) return 'bg-sl-black-lighter border-sl-cyan/10';
+    if (!activity) return "bg-sl-black-lighter border-sl-cyan/10";
 
     const totalActivity =
-      activity.questsCompleted + activity.habitsCompleted + activity.statsGained;
+      activity.questsCompleted +
+      activity.habitsCompleted +
+      activity.statsGained;
 
-    if (totalActivity === 0) return 'bg-sl-black-lighter border-sl-cyan/10';
-    if (totalActivity <= 2) return 'bg-sl-cyan/20 border-sl-cyan/30';
-    if (totalActivity <= 5) return 'bg-sl-cyan/40 border-sl-cyan/50';
-    if (totalActivity <= 10) return 'bg-sl-cyan/60 border-sl-cyan/70';
-    return 'bg-sl-cyan border-sl-cyan';
+    if (totalActivity === 0) return "bg-sl-black-lighter border-sl-cyan/10";
+    if (totalActivity <= 2) return "bg-sl-cyan/20 border-sl-cyan/30";
+    if (totalActivity <= 5) return "bg-sl-cyan/40 border-sl-cyan/50";
+    if (totalActivity <= 10) return "bg-sl-cyan/60 border-sl-cyan/70";
+    return "bg-sl-cyan border-sl-cyan";
   };
 
   // Group days by week
@@ -60,13 +63,13 @@ export function ActivityHeatmap() {
           {weeks.map((week, weekIndex) => (
             <div key={weekIndex} className="flex flex-col gap-1">
               {week.map((day) => {
-                const dateStr = format(day, 'yyyy-MM-dd');
+                const dateStr = format(day, "yyyy-MM-dd");
                 return (
                   <div
                     key={dateStr}
                     className={cn(
-                      'w-3 h-3 rounded-sm border transition-all cursor-pointer hover:scale-125',
-                      getIntensityColor(day)
+                      "w-3 h-3 rounded-sm border transition-all cursor-pointer hover:scale-125",
+                      getIntensityColor(day),
                     )}
                     onMouseEnter={(e) => {
                       setHoveredDate(dateStr);
@@ -76,7 +79,7 @@ export function ActivityHeatmap() {
                       setMousePosition({ x: e.clientX, y: e.clientY });
                     }}
                     onMouseLeave={() => setHoveredDate(null)}
-                    title={format(day, 'MMM d, yyyy')}
+                    title={format(day, "MMM d, yyyy")}
                   />
                 );
               })}
@@ -93,7 +96,7 @@ export function ActivityHeatmap() {
             }}
           >
             <p className="font-semibold mb-2">
-              {format(new Date(hoveredDate), 'MMMM d, yyyy')}
+              {format(new Date(hoveredDate), "MMMM d, yyyy")}
             </p>
             {hoveredActivity ? (
               <div className="space-y-1 text-muted-foreground">
