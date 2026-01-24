@@ -1,219 +1,97 @@
-# The System - Solo Leveling Self-Improvement App
+# The System
 
-A Solo Leveling-inspired self-improvement system built with Next.js 14, TypeScript, Tailwind CSS, and Zustand for state management.
+A Solo Leveling-inspired self-improvement application where users can track quests, build habits, and level up their real-life stats through consistent daily actions.
+
+## Technologies
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **shadcn/ui** - UI components
+- **Zustand** - State management with localStorage persistence
+- **Framer Motion** - Animations
+- **date-fns** - Date utilities
+- **Lucide React** - Icons
 
 ## Features
 
-### 🎯 Quest System
-- **Daily Quests**: Reset at midnight; must complete ALL to maintain streak
-- **Weekly Quests**: Reset on configured day (default: Sunday)
-- Quest types reward specific stats:
-  - Workout → Strength +1
-  - Endurance → Stamina +1
-  - Skill → Agility +1
-  - Deep Work → Intelligence +1
-  - Completing ALL daily quests → Willpower +1
+- **Quest System** - Daily and weekly quests that reward specific stats
+- **Stats & Leveling** - Track 5 core stats (Strength, Stamina, Intelligence, Agility, Willpower)
+- **Habit Tracker** - Build good habits and resist bad ones
+- **Deep Work Timer** - 30-minute focus sessions for Intelligence gains
+- **Streak System** - Track consecutive days of completed quests
+- **Activity Heatmap** - GitHub-style calendar showing 365 days of activity
+- **Responsive Design** - Clean, modern UI built with Tailwind CSS
 
-### 📊 Stats & Leveling
-- **5 Core Stats**: Strength, Stamina, Intelligence, Agility, Willpower
-- Each stat goes from 0-10
-- Player level = minimum of all stat levels
-- Level up when all stats reach the next tier together
-- Dramatic level-up animations
+## The Process
 
-### 💪 Habit Tracker
-- Track **Good Habits**: Completing grants +1 Willpower
-- Resist **Bad Habits**: Resisting grants +1 Willpower
-- Willpower can go negative (capped at -5)
-- Visual warnings when Willpower is low
+This project was built as a personal self-improvement tool inspired by the Solo Leveling series. The development focused on:
 
-### 🧠 Deep Work Timer
-- 30-minute focus sessions
-- Completing a session grants +1 Intelligence
-- Timer persists across browser refreshes
-- Pause, resume, and cancel functionality
+- Setting up a Next.js 14 application with modern frontend tooling
+- Implementing a gamified stat and leveling system
+- Creating persistent state management with Zustand and localStorage
+- Building an intuitive UI for tracking daily progress
+- Designing engaging animations for level-ups and achievements
 
-### 🔥 Punishment & Streak System
-- Streak counter tracks consecutive days with all daily quests completed
-- Missing daily quests triggers punishment modal
-- Breaks your streak (but doesn't decrease stats)
-- Longest streak tracking
+## What I Learned
 
-### 📅 Activity Heatmap
-- GitHub-style calendar showing 365 days of activity
-- Color intensity based on daily activity
-- Tracks quests completed, habits logged, and stats gained
-- Hover tooltips with daily details
+- **State Management** - Deepened understanding of Zustand for complex state with persistence
+- **Next.js App Router** - Gained experience with the latest Next.js routing patterns
+- **Animation Design** - Learned to create engaging micro-interactions with Framer Motion
+- **Gamification** - Understanding how to make mundane tasks engaging through game mechanics
 
-### ⚙️ Settings
-- Configure daily reset time (default: midnight)
-- Configure weekly reset day (default: Sunday)
-- Export data to JSON for backup
-- Import data from JSON backup
-- Reset all data (with confirmation)
+## What Could Be Improved
 
-## Tech Stack
+- Add cloud sync for data backup across devices
+- Implement social features for accountability partners
+- Add customizable quest templates
+- Include achievement badges and milestones
+- Add data visualization for long-term progress
+- Implement mobile app version
+- Add reminders and notifications
+- Create a public API for integrations
 
-- **Next.js 14** (App Router)
-- **TypeScript** for type safety
-- **Tailwind CSS** for styling
-- **shadcn/ui** for UI components
-- **Zustand** for state management with localStorage persistence
-- **Framer Motion** for animations
-- **date-fns** for date utilities
-- **react-hot-toast** for notifications
-- **Lucide React** for icons
+## How to Run the Project
 
-## Getting Started
+### Prerequisites
 
-### Installation
+- Node.js 18+
+- npm or yarn
+
+### Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd the-system
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Visit http://localhost:3000 in your browser
+
+### Build for Production
 
 ```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
 npm run build
-
-# Start production server
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
-
-## Usage Guide
-
-### Creating Your First Quest
-
-1. Navigate to the **Quests** page
-2. Click "Add Daily Quest" or "Add Weekly Quest"
-3. Enter quest details:
-   - Title (required)
-   - Description (optional)
-   - Quest Type (determines stat reward)
-4. Complete quests by checking the checkbox
-5. Watch your stats grow!
-
-### Building Habits
-
-1. Go to the **Habits** page
-2. Click "Add Habit"
-3. Choose habit type:
-   - **Good Habit**: Click "Done" to complete → Willpower +1
-   - **Bad Habit**: Click "Resisted" when you resist → Willpower +1
-4. Track your Willpower stat in real-time
-
-### Deep Work Sessions
-
-1. Find the Deep Work Timer on the Dashboard or create a shortcut
-2. Click "Start Session" to begin 30-minute focus time
-3. The timer persists even if you close the browser
-4. Click "Claim Reward" when complete → Intelligence +1
-
-### Maintaining Your Streak
-
-- Complete ALL daily quests before the reset time
-- Check the streak counter on the Dashboard
-- Missing quests triggers a punishment modal and breaks your streak
-- Track your longest streak for motivation
-
-### Backing Up Your Data
-
-1. Go to **Settings**
-2. Click "Export Data" to download a JSON backup
-3. Store the backup file safely
-4. Use "Import Data" to restore from backup
-
-## Game Mechanics
-
-### Stat Progression
-- 1 action = 1 XP = 1 stat level
-- Each stat maxes at level 10
-- Player level = minimum of all stats
-
-### Willpower Stat
-- Can go negative (minimum: -5)
-- Good habits and resisting bad habits increase it
-- Failing to resist bad habits decreases it
-- Visual warnings at negative levels
-
-### Quest Reset Logic
-- Checks on app load and every 60 seconds
-- Daily: Resets at configured time (default midnight)
-- Weekly: Resets on configured day at reset time
-- Incomplete daily quests trigger punishment
-
-## Solo Leveling Theme
-
-The app features a dark, futuristic aesthetic inspired by Solo Leveling:
-- Dark backgrounds (#0a0e1a, #141824)
-- Purple accent (#8b5cf6)
-- Blue accent (#3b82f6)
-- Glowing effects on interactive elements
-- Dramatic animations for level-ups
-- Sharp, angular card designs
-
-## Data Persistence
-
-All data is stored in browser localStorage:
-- `the-system-stats`: Stats and player level
-- `the-system-quests`: Daily/weekly quests, streaks
-- `the-system-habits`: Habit definitions and logs
-- `the-system-activities`: Daily activity for heatmap
-- `the-system-settings`: User preferences
-- `the-system-deep-work`: Deep work timer state
-
-## Development
-
-### Project Structure
-
-```
-src/
-├── app/                    # Next.js pages
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Dashboard
-│   ├── quests/page.tsx
-│   ├── habits/page.tsx
-│   ├── stats/page.tsx
-│   └── settings/page.tsx
-├── components/            # React components
-│   ├── ui/               # shadcn/ui components
-│   ├── stats/            # Stat-related components
-│   ├── quests/           # Quest system components
-│   ├── habits/           # Habit tracker components
-│   ├── heatmap/          # Activity heatmap
-│   ├── punishment/       # Punishment modal, streak counter
-│   ├── deepwork/         # Deep work timer
-│   ├── layout/           # Layout components (Navbar, etc.)
-│   ├── dashboard/        # Dashboard components
-│   └── settings/         # Settings components
-├── store/                # Zustand stores
-├── lib/                  # Utilities and constants
-├── types/                # TypeScript type definitions
-└── hooks/                # Custom React hooks
-```
-
-### Key Files
-
-- `src/store/*.ts`: State management with localStorage
-- `src/lib/levelingSystem.ts`: Core game logic
-- `src/lib/questReset.ts`: Reset detection logic
-- `src/hooks/useQuestReset.ts`: Quest reset hook
-- `src/hooks/useLevelUp.ts`: Level up detection
-- `src/hooks/usePunishment.ts`: Punishment modal logic
-- `src/hooks/useDeepWork.ts`: Deep work timer logic
-
-## Contributing
-
-This is a single-user self-improvement app. Feel free to fork and customize for your own use!
-
 ## License
 
-MIT
+This project is open source and available under the MIT License.
 
-## Credits
+## Demo
 
-Inspired by the Solo Leveling manhwa/anime series.
+./assets/Showcase.mp4
