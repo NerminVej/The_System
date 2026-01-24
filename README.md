@@ -94,4 +94,4 @@ This project is open source and available under the MIT License.
 
 ## Demo
 
-./assets/Showcase.mp4
+https://github.com/user-attachments/assets/26ef4fe7-f7d0-417d-992b-7905bdf95df9
